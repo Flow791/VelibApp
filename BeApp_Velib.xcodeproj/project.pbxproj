@@ -39,6 +39,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17729F461F7D4D800016895D /* Supporting File */ = {
+			isa = PBXGroup;
+			children = (
+				17A6E33B1F7D2CAE001E67C0 /* AppDelegate.swift */,
+				17A6E3451F7D2CAE001E67C0 /* Assets.xcassets */,
+				17A6E3471F7D2CAE001E67C0 /* LaunchScreen.storyboard */,
+				17A6E34A1F7D2CAE001E67C0 /* Info.plist */,
+			);
+			name = "Supporting File";
+			sourceTree = "<group>";
+		};
 		17A6E32F1F7D2CAE001E67C0 = {
 			isa = PBXGroup;
 			children = (
@@ -61,7 +72,7 @@
 				17A6E3501F7D2CBA001E67C0 /* Model */,
 				17A6E3511F7D2CC3001E67C0 /* View */,
 				17A6E3521F7D2CC8001E67C0 /* Controller */,
-				17A6E3531F7D2CD0001E67C0 /* Supporting Files */,
+				17729F461F7D4D800016895D /* Supporting File */,
 			);
 			path = BeApp_Velib;
 			sourceTree = "<group>";
@@ -89,17 +100,6 @@
 				17A6E33D1F7D2CAE001E67C0 /* ViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		17A6E3531F7D2CD0001E67C0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				17A6E33B1F7D2CAE001E67C0 /* AppDelegate.swift */,
-				17A6E3451F7D2CAE001E67C0 /* Assets.xcassets */,
-				17A6E3471F7D2CAE001E67C0 /* LaunchScreen.storyboard */,
-				17A6E34A1F7D2CAE001E67C0 /* Info.plist */,
-			);
-			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
