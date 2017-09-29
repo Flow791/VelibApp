@@ -13,6 +13,7 @@
 		17A6E3441F7D2CAE001E67C0 /* BeApp_Velib.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17A6E3421F7D2CAE001E67C0 /* BeApp_Velib.xcdatamodeld */; };
 		17A6E3461F7D2CAE001E67C0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17A6E3451F7D2CAE001E67C0 /* Assets.xcassets */; };
 		17A6E3491F7D2CAE001E67C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17A6E3471F7D2CAE001E67C0 /* LaunchScreen.storyboard */; };
+		17A6E3551F7D3E97001E67C0 /* StationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6E3541F7D3E97001E67C0 /* StationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		17A6E3451F7D2CAE001E67C0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17A6E3481F7D2CAE001E67C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17A6E34A1F7D2CAE001E67C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17A6E3541F7D3E97001E67C0 /* StationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		17729F461F7D4D800016895D /* Supporting File */ = {
+			isa = PBXGroup;
+			children = (
+				17A6E33B1F7D2CAE001E67C0 /* AppDelegate.swift */,
+				17A6E3451F7D2CAE001E67C0 /* Assets.xcassets */,
+				17A6E3471F7D2CAE001E67C0 /* LaunchScreen.storyboard */,
+				17A6E34A1F7D2CAE001E67C0 /* Info.plist */,
+			);
+			name = "Supporting File";
+			sourceTree = "<group>";
+		};
 		17A6E32F1F7D2CAE001E67C0 = {
 			isa = PBXGroup;
 			children = (
@@ -59,7 +72,7 @@
 				17A6E3501F7D2CBA001E67C0 /* Model */,
 				17A6E3511F7D2CC3001E67C0 /* View */,
 				17A6E3521F7D2CC8001E67C0 /* Controller */,
-				17A6E3531F7D2CD0001E67C0 /* Other */,
+				17729F461F7D4D800016895D /* Supporting File */,
 			);
 			path = BeApp_Velib;
 			sourceTree = "<group>";
@@ -68,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				17A6E3421F7D2CAE001E67C0 /* BeApp_Velib.xcdatamodeld */,
+				17A6E3541F7D3E97001E67C0 /* StationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -76,7 +90,6 @@
 			isa = PBXGroup;
 			children = (
 				17A6E33F1F7D2CAE001E67C0 /* Main.storyboard */,
-				17A6E3471F7D2CAE001E67C0 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -87,16 +100,6 @@
 				17A6E33D1F7D2CAE001E67C0 /* ViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		17A6E3531F7D2CD0001E67C0 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				17A6E34A1F7D2CAE001E67C0 /* Info.plist */,
-				17A6E3451F7D2CAE001E67C0 /* Assets.xcassets */,
-				17A6E33B1F7D2CAE001E67C0 /* AppDelegate.swift */,
-			);
-			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +174,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17A6E3551F7D3E97001E67C0 /* StationManager.swift in Sources */,
 				17A6E3441F7D2CAE001E67C0 /* BeApp_Velib.xcdatamodeld in Sources */,
 				17A6E33E1F7D2CAE001E67C0 /* ViewController.swift in Sources */,
 				17A6E33C1F7D2CAE001E67C0 /* AppDelegate.swift in Sources */,
