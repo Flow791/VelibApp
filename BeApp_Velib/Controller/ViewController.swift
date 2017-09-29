@@ -8,34 +8,50 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource {
 
-    let stationManager:StationManager = StationManager()
+    private let stationManager:StationManager = StationManager()
     var stations:[Station] = [Station]()
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         stationManager.loadStation(completion: receiveStations)
         
-        
-        
+        tableView.dataSource = self
     }
 
     private func receiveStations(_ stations: [Station]) {
         self.stations = stations
+        
+        tableView.reloadData()
         
         for value in stations {
             print(value.name!)
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: TableView
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return stations.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell")!
+        
+        cell.textLabel?.text = stations[indexPath.row].name!
+        
+        return cell
+    }
 
 }
 
