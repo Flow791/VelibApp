@@ -14,10 +14,25 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
     var stations:[Station] = [Station]()
     var filteredStations:[Station] = [Station]()
     let searchController = UISearchController(searchResultsController: nil)
+    var openedStations:[Station] = [Station]()
+    var closedStations:[Station] = [Station]()
     
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func changedSegmentedChoice(_ sender: Any) {
+        
+        if isFiltering(){
+
+            sortStations(stations: filteredStations)
+            tableView.reloadData()
+        }else {
+
+            sortStations(stations: stations)
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +50,9 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
     private func receiveStations(_ stations: [Station]) {
         self.stations = stations
         
-        tableView.reloadData()
+        sortStations(stations: stations)
         
-        for value in stations {
-            print(value.name!)
-        }
+        tableView.reloadData()
     }
     
     // MARK: TableView
@@ -49,19 +62,58 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if isFiltering() {
-            return filteredStations.count
+            switch segmentedControl.selectedSegmentIndex {
+            case 0:
+                return filteredStations.count
+            case 1:
+                return openedStations.count
+            case 2:
+                return closedStations.count
+            default :
+                return 1
+            }
+            
+        } else {
+            switch segmentedControl.selectedSegmentIndex {
+            case 0:
+                return stations.count
+            case 1:
+                return openedStations.count
+            case 2:
+                return closedStations.count
+            default:
+                return 1
+            }
         }
-        return stations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell")!
         
         if isFiltering() {
-            cell.textLabel!.text = filteredStations[indexPath.row].name!
+            switch segmentedControl.selectedSegmentIndex {
+            case 0:
+                cell.textLabel!.text = filteredStations[indexPath.row].name!
+            case 1:
+                cell.textLabel!.text = openedStations[indexPath.row].name!
+            case 2:
+                cell.textLabel!.text = closedStations[indexPath.row].name!
+            default :
+                cell.textLabel!.text = "Error"
+            }
         } else {
-            cell.textLabel!.text = stations[indexPath.row].name!
+            switch segmentedControl.selectedSegmentIndex {
+            case 0:
+                cell.textLabel!.text = stations[indexPath.row].name!
+            case 1:
+                cell.textLabel!.text = openedStations[indexPath.row].name!
+            case 2:
+                cell.textLabel!.text = closedStations[indexPath.row].name!
+            default :
+                cell.textLabel!.text = "Error"
+            }
         }
         
         return cell
@@ -71,6 +123,8 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
     
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!.lowercased())
+        sortStations(stations: filteredStations)
+        tableView.reloadData()
     }
     
     func searchBarIsEmpty() -> Bool {
@@ -88,6 +142,24 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
     
     func isFiltering() -> Bool {
         return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    //MARK : SegmentedControl
+    
+    func sortStations(stations: [Station]) {
+        
+        openedStations = []
+        closedStations = []
+        
+        for station in stations {
+            if station.status == "OPEN"{
+                openedStations.append(station)
+            }else {
+                closedStations.append(station)
+            }
+        }
+        
+        tableView.reloadData()
     }
     
 }
