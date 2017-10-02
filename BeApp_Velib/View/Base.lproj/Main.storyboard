@@ -18,12 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="c18-um-2VC">
-                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
-                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EyB-Kz-buq">
                                 <rect key="frame" x="0.0" y="76" width="375" height="41"/>
                                 <constraints>
@@ -40,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stationCell" id="KzT-JG-zQ6">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="stationCell" id="KzT-JG-zQ6">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KzT-JG-zQ6" id="URI-h2-nIu">
@@ -50,30 +44,45 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2qB-FH-0nT">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="3re-Xh-h80"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="c18-um-2VC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8S8-KQ-R85"/>
-                            <constraint firstItem="c18-um-2VC" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="BIh-JZ-mjm"/>
-                            <constraint firstItem="c18-um-2VC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EVg-Sm-ut3"/>
+                            <constraint firstItem="EyB-Kz-buq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="56" id="1az-Sc-mwK"/>
+                            <constraint firstItem="2qB-FH-0nT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="A3X-0h-fAl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Yco-I5-wjm" secondAttribute="bottom" id="Fwe-Q2-9Wt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Yco-I5-wjm" secondAttribute="trailing" id="KhG-vd-OC6"/>
-                            <constraint firstItem="EyB-Kz-buq" firstAttribute="top" secondItem="c18-um-2VC" secondAttribute="bottom" id="LeT-kX-46w"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2qB-FH-0nT" secondAttribute="trailing" id="Kpb-12-xFb"/>
                             <constraint firstItem="EyB-Kz-buq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="QlZ-eR-Xin"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EyB-Kz-buq" secondAttribute="trailing" id="SB0-un-GWt"/>
-                            <constraint firstItem="c18-um-2VC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="fVi-GI-url"/>
+                            <constraint firstItem="2qB-FH-0nT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="a3E-h4-e7w"/>
                             <constraint firstItem="Yco-I5-wjm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gQ5-Ej-IAB"/>
                             <constraint firstItem="Yco-I5-wjm" firstAttribute="top" secondItem="EyB-Kz-buq" secondAttribute="bottom" id="ta3-Xd-rJr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="searchBar" destination="c18-um-2VC" id="alG-xd-5UU"/>
+                        <outlet property="searchDisplayController" destination="CFP-cl-FCw" id="Vza-c0-wZ8"/>
+                        <outlet property="searchView" destination="2qB-FH-0nT" id="yMY-Hj-ggt"/>
                         <outlet property="segmentedControl" destination="EyB-Kz-buq" id="e0s-P5-xdF"/>
                         <outlet property="tableView" destination="Yco-I5-wjm" id="2HF-hQ-sU4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="CFP-cl-FCw">
+                    <connections>
+                        <outlet property="delegate" destination="BYZ-38-t0r" id="xHz-JW-Xi4"/>
+                        <outlet property="searchContentsController" destination="BYZ-38-t0r" id="DDO-az-sQk"/>
+                        <outlet property="searchResultsDataSource" destination="BYZ-38-t0r" id="xXq-Tm-lyt"/>
+                        <outlet property="searchResultsDelegate" destination="BYZ-38-t0r" id="kze-DY-F4Y"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
         </scene>
     </scenes>
