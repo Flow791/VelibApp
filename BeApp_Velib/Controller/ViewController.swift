@@ -61,6 +61,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
         sortStations(stations: stations)
         
         tableView.reloadData()
+        self.tableView.stopPullToRefresh()
     }
     
     // MARK: TableView
@@ -166,19 +167,14 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
                 closedStations.append(station)
             }
         }
-        
-        tableView.reloadData()
     }
     
     //MARK: Refreshing
     
     private func refresh() {
         tableView.addPullToRefreshWithAction {
-            OperationQueue().addOperation {
-                sleep(2)
-                OperationQueue.main.addOperation {
-                    self.tableView.stopPullToRefresh()
-                }
+            DispatchQueue.global().async {
+                self.stationManager.loadStation(completion: self.receiveStations)
             }
         }
     }
