@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Toaster
 
 class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUpdating {
 
@@ -15,7 +16,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
     var filteredStations:[Station] = [Station]()
     let searchController = UISearchController(searchResultsController: nil)
     var openedStations:[Station] = [Station]()
-    var closedStations:[Station] = [Station]()
+    var closedStations:[Station] = [Station]()    
     
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -51,8 +52,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
         self.stations = stations
         
         guard error == nil else {
-            //return toast
-            return print(error!.localizedDescription)
+            return Toast(text: "Aucune Connexion...", delay: Delay.short, duration: Delay.long).show()
         }
         
         sortStations(stations: stations)

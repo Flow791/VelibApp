@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		170398BB1F839E0A00FB46C0 /* Pods_BeApp_Velib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170398BC1F839E0A00FB46C0 /* Pods_BeApp_Velib.framework */; };
+		170398BD1F839E1C00FB46C0 /* Toaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170398BE1F839E1C00FB46C0 /* Toaster.framework */; };
 		17A6E33C1F7D2CAE001E67C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6E33B1F7D2CAE001E67C0 /* AppDelegate.swift */; };
 		17A6E33E1F7D2CAE001E67C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6E33D1F7D2CAE001E67C0 /* ViewController.swift */; };
 		17A6E3411F7D2CAE001E67C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17A6E33F1F7D2CAE001E67C0 /* Main.storyboard */; };
@@ -17,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		170398BC1F839E0A00FB46C0 /* Pods_BeApp_Velib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_BeApp_Velib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		170398BE1F839E1C00FB46C0 /* Toaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Toaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		170398C01F83A04500FB46C0 /* Toast_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Toast_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17A6E3381F7D2CAE001E67C0 /* BeApp_Velib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeApp_Velib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17A6E33B1F7D2CAE001E67C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17A6E33D1F7D2CAE001E67C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +31,8 @@
 		17A6E3481F7D2CAE001E67C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17A6E34A1F7D2CAE001E67C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17A6E3541F7D3E97001E67C0 /* StationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationManager.swift; sourceTree = "<group>"; };
+		36B8A945A9953AEBB147E2FC /* Pods-BeApp_Velib.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeApp_Velib.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeApp_Velib/Pods-BeApp_Velib.release.xcconfig"; sourceTree = "<group>"; };
+		3B507CC7067EDEE06662D5CB /* Pods-BeApp_Velib.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeApp_Velib.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeApp_Velib/Pods-BeApp_Velib.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				170398BD1F839E1C00FB46C0 /* Toaster.framework in Frameworks */,
+				170398BB1F839E0A00FB46C0 /* Pods_BeApp_Velib.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +64,8 @@
 			children = (
 				17A6E33A1F7D2CAE001E67C0 /* BeApp_Velib */,
 				17A6E3391F7D2CAE001E67C0 /* Products */,
+				1C279A00CC948C0A4DAB9921 /* Pods */,
+				D5F987F3000C389F54D83F52 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +113,25 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		1C279A00CC948C0A4DAB9921 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B507CC7067EDEE06662D5CB /* Pods-BeApp_Velib.debug.xcconfig */,
+				36B8A945A9953AEBB147E2FC /* Pods-BeApp_Velib.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D5F987F3000C389F54D83F52 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				170398C01F83A04500FB46C0 /* Toast_Swift.framework */,
+				170398BE1F839E1C00FB46C0 /* Toaster.framework */,
+				170398BC1F839E0A00FB46C0 /* Pods_BeApp_Velib.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,9 +139,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17A6E34D1F7D2CAE001E67C0 /* Build configuration list for PBXNativeTarget "BeApp_Velib" */;
 			buildPhases = (
+				FD59D82BC2BBDF4A6F816BF6 /* [CP] Check Pods Manifest.lock */,
 				17A6E3341F7D2CAE001E67C0 /* Sources */,
 				17A6E3351F7D2CAE001E67C0 /* Frameworks */,
 				17A6E3361F7D2CAE001E67C0 /* Resources */,
+				0AB494249834392FEB53CB41 /* [CP] Embed Pods Frameworks */,
+				A5ED7614DBD73DD500F145C9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -168,6 +201,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0AB494249834392FEB53CB41 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeApp_Velib/Pods-BeApp_Velib-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A5ED7614DBD73DD500F145C9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeApp_Velib/Pods-BeApp_Velib-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD59D82BC2BBDF4A6F816BF6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		17A6E3341F7D2CAE001E67C0 /* Sources */ = {
@@ -312,11 +393,13 @@
 		};
 		17A6E34E1F7D2CAE001E67C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B507CC7067EDEE06662D5CB /* Pods-BeApp_Velib.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 377R8WMVZ9;
 				INFOPLIST_FILE = BeApp_Velib/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.florianbaudin.BeApp-Velib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -327,11 +410,13 @@
 		};
 		17A6E34F1F7D2CAE001E67C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36B8A945A9953AEBB147E2FC /* Pods-BeApp_Velib.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 377R8WMVZ9;
 				INFOPLIST_FILE = BeApp_Velib/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "fr.florianbaudin.BeApp-Velib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
