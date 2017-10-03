@@ -42,6 +42,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
         stationManager.loadStation(completion: receiveStations)
         
         tableView.dataSource = self
+        tableView.rowHeight = 80
         
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
@@ -99,27 +100,45 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell") as! StationTableViewCell
         
         if isFiltering() {
             switch segmentedControl.selectedSegmentIndex {
             case 0:
-                cell.textLabel!.text = filteredStations[indexPath.row].name!
+                cell.nameLabelCell.text = filteredStations[indexPath.row].name!
+                cell.statusLabelCell.text = filteredStations[indexPath.row].status!
+                cell.bikeLabelCell.text = "Vélos : \(filteredStations[indexPath.row].bikeStands)"
+                cell.availableLabelCell.text = "Disponible : \(filteredStations[indexPath.row].availableBike)"
             case 1:
-                cell.textLabel!.text = openedStations[indexPath.row].name!
+                cell.nameLabelCell.text = openedStations[indexPath.row].name!
+                cell.statusLabelCell.text = openedStations[indexPath.row].status!
+                cell.bikeLabelCell.text = "Vélos : \(openedStations[indexPath.row].bikeStands)"
+                cell.availableLabelCell.text = "Disponible : \(openedStations[indexPath.row].availableBike)"
             case 2:
-                cell.textLabel!.text = closedStations[indexPath.row].name!
+                cell.nameLabelCell.text = closedStations[indexPath.row].name!
+                cell.statusLabelCell.text = closedStations[indexPath.row].status!
+                cell.bikeLabelCell.text = "Vélos : \(closedStations[indexPath.row].bikeStands)"
+                cell.availableLabelCell.text = "Disponible : \(closedStations[indexPath.row].availableBike)"
             default :
                 cell.textLabel!.text = "Error"
             }
         } else {
             switch segmentedControl.selectedSegmentIndex {
             case 0:
-                cell.textLabel!.text = stations[indexPath.row].name!
+                cell.nameLabelCell.text = stations[indexPath.row].name!
+                cell.statusLabelCell.text = stations[indexPath.row].status!
+                cell.bikeLabelCell.text = "Vélos : \(stations[indexPath.row].bikeStands)"
+                cell.availableLabelCell.text = "Disponible : \(stations[indexPath.row].availableBike)"
             case 1:
-                cell.textLabel!.text = openedStations[indexPath.row].name!
+                cell.nameLabelCell.text = openedStations[indexPath.row].name!
+                cell.statusLabelCell.text = openedStations[indexPath.row].status!
+                cell.bikeLabelCell.text = "Vélos : \(openedStations[indexPath.row].bikeStands)"
+                cell.availableLabelCell.text = "Disponible : \(openedStations[indexPath.row].availableBike)"
             case 2:
-                cell.textLabel!.text = closedStations[indexPath.row].name!
+                cell.nameLabelCell.text = closedStations[indexPath.row].name!
+                cell.statusLabelCell.text = closedStations[indexPath.row].status!
+                cell.bikeLabelCell.text = "Vélos : \(closedStations[indexPath.row].bikeStands)"
+                cell.availableLabelCell.text = "Disponible : \(closedStations[indexPath.row].availableBike)"
             default :
                 cell.textLabel!.text = "Error"
             }
