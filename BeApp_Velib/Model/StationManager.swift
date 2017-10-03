@@ -15,24 +15,21 @@ class StationManager  {
     private let url = URL(string: "https://api.jcdecaux.com/vls/v1/stations?contract=Paris&apiKey=99b373f97dca487124258364f9f9d54546f1a65f")!
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    func loadStation(completion: @escaping (_ data:[Station])->()) {
+    func loadStation(completion: @escaping (_ data:[Station],_ error:Error?)->()) {
         
-        let stations:[Station] = [Station]()
         let task = URLSession.shared.dataTask(with: self.url) { (data, response, error) in
             
             guard error == nil else {
-                completion([Station]())
+                completion([Station](),error)
                 return
             }
 
             DispatchQueue.main.async {
                 self.deleteAllStations()
-                completion(self.parse(data: data))
+                completion(self.parse(data: data),error)
             }
         }
         task.resume()
-        
-        completion(stations)
     }
     
     private func parse(data: Data?) -> [Station] {

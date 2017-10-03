@@ -47,10 +47,16 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
         searchView.addSubview(searchController.searchBar)
     }
 
-    private func receiveStations(_ stations: [Station]) {
+    private func receiveStations(_ stations: [Station], error:Error?) {
         self.stations = stations
         
+        guard error == nil else {
+            //return toast
+            return print(error!.localizedDescription)
+        }
+        
         sortStations(stations: stations)
+        print(stations)
         
         tableView.reloadData()
     }
@@ -72,7 +78,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
             case 2:
                 return closedStations.count
             default :
-                return 1
+                return 0
             }
             
         } else {
@@ -84,7 +90,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
             case 2:
                 return closedStations.count
             default:
-                return 1
+                return 0
             }
         }
     }
