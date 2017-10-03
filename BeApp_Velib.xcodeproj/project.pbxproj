@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		170398BB1F839E0A00FB46C0 /* Pods_BeApp_Velib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170398BC1F839E0A00FB46C0 /* Pods_BeApp_Velib.framework */; };
 		170398BD1F839E1C00FB46C0 /* Toaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170398BE1F839E1C00FB46C0 /* Toaster.framework */; };
+		170398C31F83B5AD00FB46C0 /* Refresher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170398C41F83B5AD00FB46C0 /* Refresher.framework */; };
 		17A6E33C1F7D2CAE001E67C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6E33B1F7D2CAE001E67C0 /* AppDelegate.swift */; };
 		17A6E33E1F7D2CAE001E67C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A6E33D1F7D2CAE001E67C0 /* ViewController.swift */; };
 		17A6E3411F7D2CAE001E67C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17A6E33F1F7D2CAE001E67C0 /* Main.storyboard */; };
@@ -22,6 +23,8 @@
 		170398BC1F839E0A00FB46C0 /* Pods_BeApp_Velib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_BeApp_Velib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		170398BE1F839E1C00FB46C0 /* Toaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Toaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		170398C01F83A04500FB46C0 /* Toast_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Toast_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		170398C21F83B08C00FB46C0 /* MJRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MJRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		170398C41F83B5AD00FB46C0 /* Refresher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Refresher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17A6E3381F7D2CAE001E67C0 /* BeApp_Velib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeApp_Velib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17A6E33B1F7D2CAE001E67C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17A6E33D1F7D2CAE001E67C0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				170398C31F83B5AD00FB46C0 /* Refresher.framework in Frameworks */,
 				170398BD1F839E1C00FB46C0 /* Toaster.framework in Frameworks */,
 				170398BB1F839E0A00FB46C0 /* Pods_BeApp_Velib.framework in Frameworks */,
 			);
@@ -125,6 +129,8 @@
 		D5F987F3000C389F54D83F52 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				170398C41F83B5AD00FB46C0 /* Refresher.framework */,
+				170398C21F83B08C00FB46C0 /* MJRefresh.framework */,
 				170398C01F83A04500FB46C0 /* Toast_Swift.framework */,
 				170398BE1F839E1C00FB46C0 /* Toaster.framework */,
 				170398BC1F839E0A00FB46C0 /* Pods_BeApp_Velib.framework */,

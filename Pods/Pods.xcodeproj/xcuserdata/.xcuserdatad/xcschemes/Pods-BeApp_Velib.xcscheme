@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '06D7D6BC95A1AE1294DACDC1A39D0783'
+               BlueprintIdentifier = 'A50688A316F15F191C546E8C9C95B494'
                BlueprintName = 'Pods-BeApp_Velib'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods-BeApp_Velib.framework'>

@@ -8,6 +8,7 @@
 
 import UIKit
 import Toaster
+import Refresher
 
 class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUpdating {
 
@@ -46,6 +47,8 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
         searchController.dimsBackgroundDuringPresentation = false
         definesPresentationContext = true
         searchView.addSubview(searchController.searchBar)
+        
+        refresh()
     }
 
     private func receiveStations(_ stations: [Station], error:Error?) {
@@ -56,7 +59,6 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
         }
         
         sortStations(stations: stations)
-        print(stations)
         
         tableView.reloadData()
     }
@@ -168,5 +170,17 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
         tableView.reloadData()
     }
     
+    //MARK: Refreshing
+    
+    private func refresh() {
+        tableView.addPullToRefreshWithAction {
+            OperationQueue().addOperation {
+                sleep(2)
+                OperationQueue.main.addOperation {
+                    self.tableView.stopPullToRefresh()
+                }
+            }
+        }
+    }
 }
 

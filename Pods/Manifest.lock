@@ -1,12 +1,15 @@
 PODS:
+  - Refresher (0.6.1)
   - Toaster (2.0.4)
 
 DEPENDENCIES:
+  - Refresher
   - Toaster
 
 SPEC CHECKSUMS:
+  Refresher: 7c6f09ef3428aa921cb477611fb26bf29a9e5492
   Toaster: f13031c636ef065281bc11857be9a16c7659e04f
 
-PODFILE CHECKSUM: f3e079af89626b2fb9fe069b123a59debe5ec267
+PODFILE CHECKSUM: ebd671654cc7f87cb194fc29a83abd5d5d82447b
 
 COCOAPODS: 1.2.0

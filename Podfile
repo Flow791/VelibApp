@@ -9,5 +9,6 @@ target 'BeApp_Velib' do
 
   # Pods for BeApp_Velib
   pod 'Toaster'
+  pod 'Refresher'
 
 end
