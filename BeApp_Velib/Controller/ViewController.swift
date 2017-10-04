@@ -59,6 +59,8 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
             return Toast(text: "Aucune Connexion...", delay: Delay.short, duration: Delay.long).show()
         }
         
+        self.stations = stations.sorted { $0.name!.localizedCaseInsensitiveCompare($1.name!) == ComparisonResult.orderedAscending }
+        
         sortStations(stations: stations)
         
         tableView.reloadData()
