@@ -20,7 +20,7 @@ class StationManager  {
         let task = URLSession.shared.dataTask(with: self.url) { (data, response, error) in
             
             guard error == nil else {
-                completion([Station](),error)
+                completion(self.getStationsSaved(),error)
                 return
             }
 

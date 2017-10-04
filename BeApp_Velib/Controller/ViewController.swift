@@ -11,7 +11,7 @@ import Toaster
 import Refresher
 
 class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUpdating {
-
+    
     private let stationManager:StationManager = StationManager()
     var stations:[Station] = [Station]()
     var filteredStations:[Station] = [Station]()
@@ -26,11 +26,11 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
     @IBAction func changedSegmentedChoice(_ sender: Any) {
         
         if isFiltering(){
-
+            
             sortStations(stations: filteredStations)
             tableView.reloadData()
         }else {
-
+            
             sortStations(stations: stations)
             tableView.reloadData()
         }
@@ -51,20 +51,22 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
         
         refresh()
     }
-
+    
     private func receiveStations(_ stations: [Station], error:Error?) {
+        
         self.stations = stations
+        
+        self.stations = stations.sorted { $0.name!.localizedCaseInsensitiveCompare($1.name!) == ComparisonResult.orderedAscending }
+        sortStations(stations: stations)
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        self.tableView.stopPullToRefresh()
         
         guard error == nil else {
             return Toast(text: "Aucune Connexion...", delay: Delay.short, duration: Delay.long).show()
         }
-        
-        self.stations = stations.sorted { $0.name!.localizedCaseInsensitiveCompare($1.name!) == ComparisonResult.orderedAscending }
-        
-        sortStations(stations: stations)
-        
-        tableView.reloadData()
-        self.tableView.stopPullToRefresh()
     }
     
     // MARK: TableView
@@ -104,51 +106,38 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stationCell") as! StationTableViewCell
         
-        if isFiltering() {
-            switch segmentedControl.selectedSegmentIndex {
-            case 0:
+        
+        
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            if isFiltering() {
                 cell.nameLabelCell.text = filteredStations[indexPath.row].name!
                 cell.statusLabelCell.text = filteredStations[indexPath.row].status!
                 cell.bikeLabelCell.text = "Vélos : \(filteredStations[indexPath.row].bikeStands)"
                 cell.availableLabelCell.text = "Disponible : \(filteredStations[indexPath.row].availableBike)"
-            case 1:
-                cell.nameLabelCell.text = openedStations[indexPath.row].name!
-                cell.statusLabelCell.text = openedStations[indexPath.row].status!
-                cell.bikeLabelCell.text = "Vélos : \(openedStations[indexPath.row].bikeStands)"
-                cell.availableLabelCell.text = "Disponible : \(openedStations[indexPath.row].availableBike)"
-            case 2:
-                cell.nameLabelCell.text = closedStations[indexPath.row].name!
-                cell.statusLabelCell.text = closedStations[indexPath.row].status!
-                cell.bikeLabelCell.text = "Vélos : \(closedStations[indexPath.row].bikeStands)"
-                cell.availableLabelCell.text = "Disponible : \(closedStations[indexPath.row].availableBike)"
-            default :
-                cell.textLabel!.text = "Error"
-            }
-        } else {
-            switch segmentedControl.selectedSegmentIndex {
-            case 0:
+            } else {
                 cell.nameLabelCell.text = stations[indexPath.row].name!
                 cell.statusLabelCell.text = stations[indexPath.row].status!
                 cell.bikeLabelCell.text = "Vélos : \(stations[indexPath.row].bikeStands)"
                 cell.availableLabelCell.text = "Disponible : \(stations[indexPath.row].availableBike)"
-            case 1:
-                cell.nameLabelCell.text = openedStations[indexPath.row].name!
-                cell.statusLabelCell.text = openedStations[indexPath.row].status!
-                cell.bikeLabelCell.text = "Vélos : \(openedStations[indexPath.row].bikeStands)"
-                cell.availableLabelCell.text = "Disponible : \(openedStations[indexPath.row].availableBike)"
-            case 2:
-                cell.nameLabelCell.text = closedStations[indexPath.row].name!
-                cell.statusLabelCell.text = closedStations[indexPath.row].status!
-                cell.bikeLabelCell.text = "Vélos : \(closedStations[indexPath.row].bikeStands)"
-                cell.availableLabelCell.text = "Disponible : \(closedStations[indexPath.row].availableBike)"
-            default :
-                cell.textLabel!.text = "Error"
             }
+        case 1:
+            cell.nameLabelCell.text = openedStations[indexPath.row].name!
+            cell.statusLabelCell.text = openedStations[indexPath.row].status!
+            cell.bikeLabelCell.text = "Vélos : \(openedStations[indexPath.row].bikeStands)"
+            cell.availableLabelCell.text = "Disponible : \(openedStations[indexPath.row].availableBike)"
+        case 2:
+            cell.nameLabelCell.text = closedStations[indexPath.row].name!
+            cell.statusLabelCell.text = closedStations[indexPath.row].status!
+            cell.bikeLabelCell.text = "Vélos : \(closedStations[indexPath.row].bikeStands)"
+            cell.availableLabelCell.text = "Disponible : \(closedStations[indexPath.row].availableBike)"
+        default :
+            cell.textLabel?.text = "Error"
         }
         
         return cell
     }
-
+    
     //MARK : Search Bar
     
     func updateSearchResults(for searchController: UISearchController) {
