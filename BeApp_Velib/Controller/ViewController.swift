@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         stationManager.loadStation(completion: receiveStations)
         
         tableView.dataSource = self
@@ -53,13 +53,18 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
     }
     
     private func receiveStations(_ stations: [Station], error:Error?) {
-        self.stations = stations
-        
-        self.stations = stations.sorted { $0.name!.localizedCaseInsensitiveCompare($1.name!) == ComparisonResult.orderedAscending }
-    
-        sortStations(stations: stations)
         
         DispatchQueue.main.async {
+            self.stations = stations
+            
+            self.stations = stations.sorted { $0.name!.localizedCaseInsensitiveCompare($1.name!) == ComparisonResult.orderedAscending }
+            
+            self.sortStations(stations: stations)
+            
+            if !self.searchBarIsEmpty() {
+                self.updateSearchResults(for: self.searchController)
+            }
+            
             self.tableView.reloadData()
             self.tableView.stopPullToRefresh()
         }
@@ -112,24 +117,24 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             if isFiltering() {
-                cell.nameLabelCell.text = filteredStations[indexPath.row].name!
-                cell.statusLabelCell.text = filteredStations[indexPath.row].status!
+                cell.nameLabelCell.text = filteredStations[indexPath.row].name ?? ""
+                cell.statusLabelCell.text = filteredStations[indexPath.row].status ?? ""
                 cell.bikeLabelCell.text = "Vélos : \(filteredStations[indexPath.row].bikeStands)"
                 cell.availableLabelCell.text = "Disponible : \(filteredStations[indexPath.row].availableBike)"
             } else {
-                cell.nameLabelCell.text = stations[indexPath.row].name!
-                cell.statusLabelCell.text = stations[indexPath.row].status!
+                cell.nameLabelCell.text = stations[indexPath.row].name ?? ""
+                cell.statusLabelCell.text = stations[indexPath.row].status ?? ""
                 cell.bikeLabelCell.text = "Vélos : \(stations[indexPath.row].bikeStands)"
                 cell.availableLabelCell.text = "Disponible : \(stations[indexPath.row].availableBike)"
             }
         case 1:
-            cell.nameLabelCell.text = openedStations[indexPath.row].name!
-            cell.statusLabelCell.text = openedStations[indexPath.row].status!
+            cell.nameLabelCell.text = openedStations[indexPath.row].name ?? ""
+            cell.statusLabelCell.text = openedStations[indexPath.row].status ?? ""
             cell.bikeLabelCell.text = "Vélos : \(openedStations[indexPath.row].bikeStands)"
             cell.availableLabelCell.text = "Disponible : \(openedStations[indexPath.row].availableBike)"
         case 2:
-            cell.nameLabelCell.text = closedStations[indexPath.row].name!
-            cell.statusLabelCell.text = closedStations[indexPath.row].status!
+            cell.nameLabelCell.text = closedStations[indexPath.row].name ?? ""
+            cell.statusLabelCell.text = closedStations[indexPath.row].status ?? ""
             cell.bikeLabelCell.text = "Vélos : \(closedStations[indexPath.row].bikeStands)"
             cell.availableLabelCell.text = "Disponible : \(closedStations[indexPath.row].availableBike)"
         default :

@@ -23,11 +23,9 @@ class StationManager  {
                 completion(self.getStationsSaved(),error)
                 return
             }
-
-            DispatchQueue.global().async {
-                self.deleteAllStations()
-                completion(self.parse(data: data),error)
-            }
+            
+            self.deleteAllStations()
+            completion(self.parse(data: data),error)
         }
         task.resume()
     }
@@ -62,23 +60,10 @@ class StationManager  {
             let availableBike = parsedData["available_bikes"] as? Int16{
             
             let station = createStation(name: name, status: status, bikeStands: bikeStands, availableBike: availableBike)
-
+            
             return station
         }
         return Station()
-    }
-    
-    private func saveStations() {
-        
-        DispatchQueue.main.async {
-
-            do {
-                try self.context.save()
-            } catch {
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
     }
     
     private func createStation(name:String, status:String, bikeStands:Int16, availableBike:Int16) -> Station {
@@ -91,6 +76,16 @@ class StationManager  {
         station.availableBike = availableBike
         
         return station
+    }
+    
+    private func saveStations() {
+        
+        do {
+            try self.context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
     }
     
     private func getStationsSaved() -> [Station] {
