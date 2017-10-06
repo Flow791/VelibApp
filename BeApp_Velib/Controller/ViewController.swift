@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         stationManager.loadStation(completion: receiveStations)
         
         tableView.dataSource = self
@@ -53,20 +53,21 @@ class ViewController: UIViewController, UITableViewDataSource, UISearchResultsUp
     }
     
     private func receiveStations(_ stations: [Station], error:Error?) {
-        
         self.stations = stations
         
         self.stations = stations.sorted { $0.name!.localizedCaseInsensitiveCompare($1.name!) == ComparisonResult.orderedAscending }
+    
         sortStations(stations: stations)
         
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            self.tableView.stopPullToRefresh()
         }
-        self.tableView.stopPullToRefresh()
         
         guard error == nil else {
             return Toast(text: "Aucune Connexion...", delay: Delay.short, duration: Delay.long).show()
         }
+        
     }
     
     // MARK: TableView
